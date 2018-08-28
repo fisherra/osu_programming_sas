@@ -1,4 +1,5 @@
-/*assignment 1 final*/
+/*Assignment 1 Final*/
+/*Fisher Ankney*/
 
 dm 'odsresults; clear';
 dm 'log; clear;';
