@@ -35,8 +35,8 @@ RUN;
 
 TITLE "Question 3";
 TITLE2 "Fisher Ankney";
-/*PROC SORT DATA = assigment_1;*/
-/*BY Group DESCENDING Dosage_Level;*/
+PROC SORT DATA = assigment_1;
+BY Group DESCENDING Dosage_Level;
 PROC PRINT DATA = assignment_1;
 VAR Group Response;
 BY Group;
