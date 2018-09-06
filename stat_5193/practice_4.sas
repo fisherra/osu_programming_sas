@@ -122,7 +122,7 @@ datalines;
 
 proc sort data= mesonet18;
 by Month;
-proc chart data = mesonet18;
+proc gchart data = mesonet18;
 Title "Question 1a";
 by Month;
 vbar MAXTEMP AVGTEMP;
@@ -131,24 +131,24 @@ vbar MAXTEMP AVGTEMP;
 breaks the bins up for you. If neither are called, levels defaults to 5 bars.*/
 
 
-proc chart data = mesonet18;
+proc gchart data = mesonet18;
 Title "Question 1b";
-by Month;
-vbar SPEEDAVG;
+vbar Month / sumvar=SPEEDAVG type = mean;
 
 
 
-proc ttest data= mesonet18 alpha = 0.01;
+proc ttest data= mesonet18 alpha = 0.01 CI=equal;
 title "Question 2a";
 class Month;
-where Month = "Mar" or Month = "Apr";
 var MAXTEMP;
+where Month = "Mar" or Month = "Apr";
+
 
 /*
 Not sure what conclusions to draw because I dont know how t-tests work...
 */
 
-proc ttest data=mesonet18 alpha = 0.01 sides = l plots=agreement;
+proc ttest data=mesonet18 alpha = 0.01 sides = u plots(only)=(agreement);
 title "Question 2b";
 paired MAXHUMID*MINHUMID;
 where Month = "Jan";
