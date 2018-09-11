@@ -27,19 +27,16 @@ label
 
 
 proc freq data = apartment;
-	tables gar*fit / plots = none nocum nopercent;
+	tables gar*fit / plots = none nocum nopercent norow nocol;
 	title3 'Question 2a';
 run;
 
 
-/* the only difference from 2a is the variables and showing the percent? */
 
 proc freq data = apartment;
-	tables  cp*ss / plots = none cumcol;
+	tables  cp*ss / plots = none nocum nopercent nocol;
 	title3 'Question 2b';
 run;
-
-/* 76.47% of apartments have security systems */
 
 
 proc freq data = apartment;
@@ -47,8 +44,11 @@ proc freq data = apartment;
 	title3 'Question 3';
 run;
 
-/* chi-square value < 3.84, fail to reject null hypothesis
-   however, p-value is high, meaning statistically insignificant? */
+/* 
+
+Chi-SQ test should not be trusted, not enough observations, results inconclusive
+
+*/
 
 
 proc ttest data = apartment plots=none;
@@ -66,3 +66,5 @@ reject the null hypothesis - means are not the same with or without garage.
 */
 
 quit;
+
+
